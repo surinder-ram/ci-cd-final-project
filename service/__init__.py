@@ -1,8 +1,8 @@
 """
 Service Package
 """
-from service.common import log_handlers  # pylint: disable=wrong-import-position
-from service import routes               # pylint: disable=wrong-import-position,cyclic-import
+from service.common import log_handlers  
+from service import routes              
 from flask import Flask
 
 app = Flask(__name__)
