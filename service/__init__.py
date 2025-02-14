@@ -1,8 +1,10 @@
 """
 Service Package
 """
+
 from flask import Flask
 from service.common import log_handlers
+
 
 def create_app():
     app = Flask(__name__)
