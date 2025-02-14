@@ -1,18 +1,19 @@
 """
 Service Package
 """
-from service.common import log_handlers
-from service import routes
 from flask import Flask
+from service.common import log_handlers
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
 
-# This must be imported after the Flask app is created
+    # Logging konfigurieren
+    log_handlers.init_logging(app, "gunicorn.error")
 
-log_handlers.init_logging(app, "gunicorn.error")
+    app.logger.info(70 * "*")
+    app.logger.info(
+        "  S E R V I C E   R U N N I N G  ".center(70, "*")
+    )
+    app.logger.info(70 * "*")
 
-app.logger.info(70 * "*")
-app.logger.info(
-    "  S E R V I C E   R U N N I N G  ".center(70, "*")
-)
-app.logger.info(70 * "*")
+    return app
